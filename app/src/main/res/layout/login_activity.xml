@@ -19,17 +19,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="User Name"
-        android:text="@{loginViewModel.email}"
         android:layout_margin="10dp" />
-
+<!--    android:text="@{loginViewModel.email}"-->
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Password"
-        android:text="@{loginViewModel.password}"
         android:layout_margin="10dp" />
-
+<!--    android:text="@{loginViewModel.password}"-->
     <ProgressBar
         android:layout_gravity="center_horizontal"
         android:id="@+id/progress_bar_login"
@@ -42,8 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Login"
-        android:onClick="@{()->loginViewModel.login(loginViewModel.email,loginViewModel.password)}"
         android:id="@+id/login_btn" />
-
+<!--    android:onClick="@{()->loginViewModel.login(loginViewModel.email,loginViewModel.password)}"-->
 </LinearLayout>
 </layout>
