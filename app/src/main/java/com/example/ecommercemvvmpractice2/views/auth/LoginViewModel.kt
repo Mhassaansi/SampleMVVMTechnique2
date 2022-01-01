@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ecommercemvvmpractice2.data.request.Auth
+import com.example.ecommercemvvmpractice2.data.response.LoginData
 import com.example.ecommercemvvmpractice2.data.response.LoginResponse
 import com.example.ecommercemvvmpractice2.data.response.NetworkResponseData
 import com.example.ecommercemvvmpractice2.helpers.AuthApiHelper
@@ -44,10 +45,10 @@ class LoginViewModel @Inject constructor(
 
     }
 
-    fun saveToken(loginResponse: LoginResponse) {
+    fun saveToken(loginResponse: LoginData) {
 
         viewModelScope.launch(Dispatchers.IO) {
-            userPrefrences.saveLoginToken(loginResponse.data.token)
+            userPrefrences.saveLoginToken(loginResponse.token)
         }
 
     }

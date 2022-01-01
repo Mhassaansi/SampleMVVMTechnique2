@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.ecommercemvvmpractice2.R
 import com.example.ecommercemvvmpractice2.data.response.NetworkResponseData
 import com.example.ecommercemvvmpractice2.databinding.LoginActivityBinding
 import com.example.ecommercemvvmpractice2.utilities.constants.StringConstants
 import com.example.ecommercemvvmpractice2.utilities.db.UserPreferences
 import com.example.ecommercemvvmpractice2.utilities.extensions.showToast
+import com.example.ecommercemvvmpractice2.views.categories.CategoryFragment
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -62,9 +64,11 @@ class LoginFragment : Fragment(R.layout.login_activity)
                 is NetworkResponseData.Success -> {
                     // binding.progressBarLogin.visibility=View.INVISIBLE
                     viewModel.isLoading.value = false
-                    if (it.data!!.status == 200) {
+                    if (it.status.name == "SUCCESS") {
                         showToast("Success Token Saved", context)
-                        viewModel.saveToken(it.data)
+                      ///  viewModel.saveToken(it.data!!.data)
+                        val action = LoginFragmentDirections.actionLoginFragmentToCategoryFragment()
+                        findNavController().navigate(action)
 
                     }
                 }
