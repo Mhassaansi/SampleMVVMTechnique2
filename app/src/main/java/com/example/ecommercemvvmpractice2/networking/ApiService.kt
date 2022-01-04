@@ -1,7 +1,8 @@
 package com.example.ecommercemvvmpractice2.networking
 
+import com.example.ecommercemvvmpractice2.data.request.AddToCart
 import com.example.ecommercemvvmpractice2.data.request.Auth
-import com.example.ecommercemvvmpractice2.data.response.LoginResponse
+import com.example.ecommercemvvmpractice2.data.response.LoginData
 import com.example.ecommercemvvmpractice2.data.response.ProductResponse
 import com.example.ecommercemvvmpractice2.utilities.constants.ApisEndpoints
 import retrofit2.http.Body
@@ -13,7 +14,7 @@ interface ApiService {
 
 
     @POST(ApisEndpoints.authLogin)
-    suspend fun login(@Body loginCredentials: Auth): LoginResponse
+    suspend fun login(@Body loginCredentials: Auth): LoginData
 
     @GET(ApisEndpoints.category)
     suspend fun getCategories(): MutableList<String>
@@ -21,5 +22,10 @@ interface ApiService {
     @GET(ApisEndpoints.products + "{CategoryName}")
     suspend fun getProductsByCategories(@Path("CategoryName") categoryName: String):
             List<ProductResponse>
+
+    @POST(ApisEndpoints.addNewProduct)
+    suspend fun addTocart(@Body productBody:AddToCart):AddToCart
+
+
 
 }

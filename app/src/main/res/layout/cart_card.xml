@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
@@ -22,40 +23,56 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/p_name"
+                android:id="@+id/cart_prod_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:text="Product Card"
+                android:text="cart Card"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/p_category"/>
+                app:layout_constraintBottom_toTopOf="@id/cart_prod_quantity"/>
 
             <TextView
-                android:id="@+id/p_category"
-                android:layout_width="match_parent"
+                android:id="@+id/cart_prod_quantity"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
-                android:text="Product Category"
+                android:text="Product Quantity"
                 android:textSize="15sp"
-                app:layout_constraintTop_toBottomOf="@id/p_name"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cart_prod_name" />
 
+            <ImageView
+                android:id="@+id/increase_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/add_product"
+                app:layout_constraintStart_toEndOf="@id/cart_prod_quantity"
+                app:layout_constraintTop_toBottomOf="@id/cart_prod_name"
                 />
+            <ImageView
+                android:id="@+id/decrease_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/minus"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintStart_toEndOf="@id/increase_product"
+                app:layout_constraintTop_toBottomOf="@id/cart_prod_name"
+                />
+
             <TextView
-                android:id="@+id/p_price"
+                android:id="@+id/cart_prod_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:text="Product Price"
                 android:textSize="15sp"
-                app:layout_constraintTop_toBottomOf="@id/p_category"
+                app:layout_constraintTop_toBottomOf="@id/cart_prod_quantity"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@id/p_category"
+                app:layout_constraintStart_toStartOf="@id/cart_prod_quantity"
 
                 />
         </androidx.constraintlayout.widget.ConstraintLayout>

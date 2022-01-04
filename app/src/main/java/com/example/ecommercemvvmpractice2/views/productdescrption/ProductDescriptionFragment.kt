@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.ecommercemvvmpractice2.R
 import com.example.ecommercemvvmpractice2.databinding.ProductDescrptionBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -16,8 +17,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class ProductDescriptionFragment : Fragment() {
 
     private lateinit var productDescrptionBinding: ProductDescrptionBinding
-    private val productDescrptionViewModel by viewModels<ProductDescriptionViewModel>()
-    private lateinit var productdescArgs: ProductDescriptionFragmentArgs
+    private val productDescrptionViewModels by viewModels<ProductDescriptionViewModel>()
+    private val productdescArgs: ProductDescriptionFragmentArgs by navArgs<ProductDescriptionFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,13 +27,20 @@ class ProductDescriptionFragment : Fragment() {
     ): View? {
         productDescrptionBinding =
             DataBindingUtil.inflate(inflater, R.layout.product_descrption, container, false)
-        productDescrptionBinding.productDescrptionViewModel = productDescrptionViewModel
+        productDescrptionBinding.productDescrptionViewModel = productDescrptionViewModels
         productDescrptionBinding.lifecycleOwner = this
         setupViews()
         return (productDescrptionBinding.root)
     }
 
     fun setupViews() {
+         productDescrptionBinding.imageUrl=productdescArgs.productImageDescrption
+//val imageUrl=productdescArgs.productImageDescrption.toUri()
+//        productDescrptionBinding.ProductDescriptionView=  Glide.with(view!!.getContext())
+//            .load()
+//            .into(view)
+
+
         productDescrptionBinding.productdescriptionName.text =
             productdescArgs.productTitleDescrption
         productDescrptionBinding.productdescriptionDescription.text =

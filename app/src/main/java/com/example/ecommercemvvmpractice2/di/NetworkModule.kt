@@ -1,6 +1,7 @@
 package com.example.ecommercemvvmpractice2.di
 
-import androidx.databinding.ktx.BuildConfig
+
+import com.example.ecommercemvvmpractice2.BuildConfig
 import com.example.ecommercemvvmpractice2.networking.ApiService
 import com.example.ecommercemvvmpractice2.utilities.constants.NetworkConstants
 import com.google.gson.Gson

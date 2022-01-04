@@ -24,7 +24,6 @@ class UserPreferences @Inject constructor(private val context: Context) {
 
 
     val userToken: Flow<LoginData?> = context.dataStore.data.map {
-
         val token = it[TOKEN] ?: return@map null
         LoginData(token)
 

@@ -1,12 +1,10 @@
 package com.example.ecommercemvvmpractice2.views.auth
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ecommercemvvmpractice2.data.request.Auth
 import com.example.ecommercemvvmpractice2.data.response.LoginData
-import com.example.ecommercemvvmpractice2.data.response.LoginResponse
 import com.example.ecommercemvvmpractice2.data.response.NetworkResponseData
 import com.example.ecommercemvvmpractice2.helpers.AuthApiHelper
 import com.example.ecommercemvvmpractice2.utilities.db.UserPreferences
@@ -25,9 +23,9 @@ class LoginViewModel @Inject constructor(
     var password = MutableLiveData<String>("")
     var isLoading = MutableLiveData(false)
 
-    private var mutableLoginData = MutableLiveData<NetworkResponseData<LoginResponse>>()
+    private var mutableLoginData = MutableLiveData<NetworkResponseData<LoginData>>()
 
-    fun getLogin(): LiveData<NetworkResponseData<LoginResponse>> {
+    fun getLogin(): LiveData<NetworkResponseData<LoginData>> {
         return mutableLoginData
     }
 
@@ -48,7 +46,7 @@ class LoginViewModel @Inject constructor(
     fun saveToken(loginResponse: LoginData) {
 
         viewModelScope.launch(Dispatchers.IO) {
-            userPrefrences.saveLoginToken(loginResponse.token)
+            loginResponse.token?.let { userPrefrences.saveLoginToken(it) }
         }
 
     }

@@ -1,7 +1,7 @@
 package com.example.ecommercemvvmpractice2.helpers
 
 import com.example.ecommercemvvmpractice2.data.request.Auth
-import com.example.ecommercemvvmpractice2.data.response.LoginResponse
+import com.example.ecommercemvvmpractice2.data.response.LoginData
 import com.example.ecommercemvvmpractice2.data.response.NetworkResponseData
 import com.example.ecommercemvvmpractice2.networking.AuthRepository
 import com.example.ecommercemvvmpractice2.utilities.constants.NetworkConstants
@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class AuthApiHelper @Inject constructor(private val authRepository: AuthRepository) {
 
-    suspend fun login(loginCredentials: Auth): NetworkResponseData<LoginResponse> {
+    suspend fun login(loginCredentials: Auth): NetworkResponseData<LoginData> {
         return NetworkConstants.performRequest {
             runBlocking {
                 authRepository.login(loginCredentials)

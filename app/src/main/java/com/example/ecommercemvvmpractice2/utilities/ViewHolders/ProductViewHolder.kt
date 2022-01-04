@@ -13,5 +13,9 @@ class ProductViewHolder(private val productCardBinding: ProductCardBinding,val l
             productCardBinding.pName.text=item.title
             productCardBinding.pCategory.text=item.category
             productCardBinding.pPrice.text=item.price.toString()
+
+           productCardBinding.root.setOnClickListener{
+               listner.getItemPosition(absoluteAdapterPosition)
+           }
         }
 }

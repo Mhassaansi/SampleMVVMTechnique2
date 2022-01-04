@@ -10,7 +10,6 @@ import com.example.ecommercemvvmpractice2.utilities.ViewHolders.CategoryViewHold
 
 class CategoryAdapter(val categoryList: List<String>, val listner: itemClickListener) :
     RecyclerView.Adapter<CategoryViewHolders>(){
-    var catName:String? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolders {
         val adapterBinding =
             CategoryCardBinding.inflate(LayoutInflater.from(parent.context), parent,

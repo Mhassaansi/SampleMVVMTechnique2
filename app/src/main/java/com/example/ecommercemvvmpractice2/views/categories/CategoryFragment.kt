@@ -9,7 +9,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ecommercemvvmpractice2.R
 import com.example.ecommercemvvmpractice2.data.response.NetworkResponseData
@@ -22,20 +21,22 @@ import dagger.hilt.android.AndroidEntryPoint
 
 
 @AndroidEntryPoint
-class CategoryFragment : Fragment(),itemClickListener {
-     private lateinit var cateogaryList:MutableList<String>
+class CategoryFragment : Fragment(), itemClickListener {
+    private lateinit var cateogaryList: MutableList<String>
     private val categoryViewModel by viewModels<CategoryViewModel>()
     private lateinit var categoryBinding: CategoryBinding
 
-     private var categroryName:String?=null
+    private var categroryName: String? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        categoryBinding = DataBindingUtil.inflate(inflater, R.layout.category,
-            container, false)
+        categoryBinding = DataBindingUtil.inflate(
+            inflater, R.layout.category,
+            container, false
+        )
         categoryBinding.categoryViewModel = categoryViewModel
         categoryBinding.lifecycleOwner = this
         observeCategory()
@@ -47,12 +48,13 @@ class CategoryFragment : Fragment(),itemClickListener {
             this, {
                 when (it) {
                     is NetworkResponseData.Loading -> {
-
+                        categoryViewModel.isLoading.value = true
+                        categoryBinding.categoryProgress.visibility = View.VISIBLE
                     }
 
                     is NetworkResponseData.Success -> {
                         if (it.status.name == "SUCCESS") {
-
+                            categoryViewModel.isLoading.value = false
                             Log.d("HASSAAN", it.data!!.toString())
                             cateogaryList = it.data as MutableList<String>
                             setupRecylerView(cateogaryList)
@@ -61,8 +63,10 @@ class CategoryFragment : Fragment(),itemClickListener {
 
                     is NetworkResponseData.Failure -> {
                         if (it.status.name == "EXCEPTION")
-                            showToast(it.message ?: StringConstants.genericErrorMessage,
-                                context)
+                            showToast(
+                                it.message ?: StringConstants.genericErrorMessage,
+                                context
+                            )
                     }
                     is NetworkResponseData.Exception -> {
                         if (it.status.name == "EXCEPTION")
@@ -76,7 +80,7 @@ class CategoryFragment : Fragment(),itemClickListener {
     }
 
     fun setupRecylerView(cateogary: List<String>) {
-        val categoryAdapter = CategoryAdapter(cateogary,this)
+        val categoryAdapter = CategoryAdapter(cateogary, this)
         categoryBinding.catRecyle.layoutManager = LinearLayoutManager(
             requireContext(),
             LinearLayoutManager.VERTICAL, false
@@ -85,10 +89,11 @@ class CategoryFragment : Fragment(),itemClickListener {
     }
 
     override fun getItemPosition(pos: Int) {
-        categroryName= cateogaryList.get(pos).toString()
-        showToast(categroryName.toString(),context)
+        categroryName = cateogaryList.get(pos).toString()
+        showToast(categroryName.toString(), context)
 
-        val action=CategoryFragmentDirections.actionCategoryFragmentToProductFragment(categroryName!!)
+        val action =
+            CategoryFragmentDirections.actionCategoryFragmentToProductFragment(categroryName!!)
         findNavController().navigate(action)
 
     }

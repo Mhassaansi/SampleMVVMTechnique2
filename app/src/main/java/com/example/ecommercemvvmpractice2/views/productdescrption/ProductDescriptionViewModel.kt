@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class ProductDescriptionViewModel : ViewModel() {
+class ProductDescriptionViewModel @Inject constructor(): ViewModel() {
 
 
 }
