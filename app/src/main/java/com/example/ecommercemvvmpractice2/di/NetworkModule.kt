@@ -45,6 +45,7 @@ object NetworkModule {
         return Request.Builder()
             .header("platform", "android")
             .header("app-version", BuildConfig.BUILD_TYPE)
+
             .build()
     }
 

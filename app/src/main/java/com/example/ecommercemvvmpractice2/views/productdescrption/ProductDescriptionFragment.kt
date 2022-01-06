@@ -34,19 +34,26 @@ class ProductDescriptionFragment : Fragment() {
     }
 
     fun setupViews() {
-         productDescrptionBinding.imageUrl=productdescArgs.productImageDescrption
-//val imageUrl=productdescArgs.productImageDescrption.toUri()
-//        productDescrptionBinding.ProductDescriptionView=  Glide.with(view!!.getContext())
-//            .load()
-//            .into(view)
-
-
+        productDescrptionBinding.imageUrl = productdescArgs.productImageDescrption
         productDescrptionBinding.productdescriptionName.text =
             productdescArgs.productTitleDescrption
         productDescrptionBinding.productdescriptionDescription.text =
             productdescArgs.productDescDescrption
         productDescrptionBinding.productdescriptionPrice.text =
             productdescArgs.productPriceDescrption
+
+        productDescrptionBinding.addToCart.setOnClickListener {
+
+            productDescrptionViewModels.saveCartElement()
+
+        }
+
+
+        fun saveValueInCart(){
+            productDescrptionViewModels.productName
+
+        }
+
     }
 
 }

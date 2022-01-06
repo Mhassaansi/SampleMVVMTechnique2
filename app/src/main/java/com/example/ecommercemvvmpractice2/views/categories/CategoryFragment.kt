@@ -14,7 +14,7 @@ import com.example.ecommercemvvmpractice2.R
 import com.example.ecommercemvvmpractice2.data.response.NetworkResponseData
 import com.example.ecommercemvvmpractice2.databinding.CategoryBinding
 import com.example.ecommercemvvmpractice2.interfaces.itemClickListener
-import com.example.ecommercemvvmpractice2.utilities.adapters.CategoryAdapter
+import com.example.ecommercemvvmpractice2.adapters.CategoryAdapter
 import com.example.ecommercemvvmpractice2.utilities.constants.StringConstants
 import com.example.ecommercemvvmpractice2.utilities.extensions.showToast
 import dagger.hilt.android.AndroidEntryPoint

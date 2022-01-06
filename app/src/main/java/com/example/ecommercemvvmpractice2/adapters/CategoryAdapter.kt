@@ -1,4 +1,4 @@
-package com.example.ecommercemvvmpractice2.utilities.adapters
+package com.example.ecommercemvvmpractice2.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

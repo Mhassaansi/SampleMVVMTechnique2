@@ -15,7 +15,7 @@ import com.example.ecommercemvvmpractice2.data.response.NetworkResponseData
 import com.example.ecommercemvvmpractice2.data.response.ProductResponse
 import com.example.ecommercemvvmpractice2.databinding.ProductRecycleBinding
 import com.example.ecommercemvvmpractice2.interfaces.itemClickListener
-import com.example.ecommercemvvmpractice2.utilities.adapters.ProductAdapter
+import com.example.ecommercemvvmpractice2.adapters.ProductAdapter
 import com.example.ecommercemvvmpractice2.utilities.constants.StringConstants
 import com.example.ecommercemvvmpractice2.utilities.extensions.showToast
 import dagger.hilt.android.AndroidEntryPoint
