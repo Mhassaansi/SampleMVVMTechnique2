@@ -1,29 +1,46 @@
 package com.example.ecommercemvvmpractice2.utilities.ViewHolders
 
-import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ecommercemvvmpractice2.data.room.Cart
 import com.example.ecommercemvvmpractice2.databinding.CartCardBinding
-import com.example.ecommercemvvmpractice2.interfaces.itemClickListener
 
-class CartViewHolder(private val cardBinding: CartCardBinding,val listener:itemClickListener) :
+class CartViewHolder(private val cardBinding: CartCardBinding) :
     RecyclerView.ViewHolder(cardBinding.root) {
 
-         fun bind(item:String){
-             cardBinding.cartProdName.text=item
-             cardBinding.cartProdPrice.text=item
-             cardBinding.cartProdQuantity.text=item
+    var count = 0
+    var updatedPrice = 0
 
-             cardBinding.increaseProduct.setOnClickListener {
-
-
-             }
-             cardBinding.decreaseProduct.setOnClickListener {
+    fun bind(item: Cart) {
+        cardBinding.cartProdName.text = item.toString()
+        cardBinding.cartProdPrice.text = item.toString()
+        cardBinding.cartProdQuantity.text = item.toString()
 
 
 
-             }
-         }
 
+        cardBinding.increaseProduct.setOnClickListener {
+            count = (cardBinding.cartProdQuantity.text.toString()).toInt()
+            count++
+            cardBinding.cartProdQuantity.text = count.toString()
+
+            updatedPrice=(count)*(cardBinding.cartProdPrice.text.toString().toInt())
+
+
+        }
+
+        cardBinding.decreaseProduct.setOnClickListener {
+            if ((cardBinding.cartProdQuantity.text as String).toInt() <= 0) {
+                cardBinding.cartProdQuantity.text = count.toString()
+            } else {
+                count = cardBinding.cartProdQuantity.text.toString().toInt()
+                count--
+                cardBinding.cartProdQuantity.text = count.toString()
+                updatedPrice=(count)*(cardBinding.cartProdPrice.text.toString().toInt())
+            }
+
+
+        }
+    }
 
 
 }

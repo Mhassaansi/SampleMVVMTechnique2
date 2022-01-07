@@ -2,7 +2,7 @@ package com.example.ecommercemvvmpractice2.helpers
 
 import com.example.ecommercemvvmpractice2.data.request.AddToCart
 import com.example.ecommercemvvmpractice2.data.response.NetworkResponseData
-import com.example.ecommercemvvmpractice2.networking.AddToCartRepository
+import com.example.ecommercemvvmpractice2.networking.Repositories.global.AddToCartRepository
 import com.example.ecommercemvvmpractice2.utilities.constants.NetworkConstants
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject

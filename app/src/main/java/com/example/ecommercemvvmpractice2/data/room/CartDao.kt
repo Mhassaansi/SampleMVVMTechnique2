@@ -1,5 +1,6 @@
 package com.example.ecommercemvvmpractice2.data.room
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 import java.util.concurrent.Flow
 
@@ -15,6 +16,9 @@ interface CartDao {
 
     @Delete
     fun deleteintoCart(cart: Cart)
+
+    @Query("SELECT * FROM cart_table")
+    fun getAllDataFromCart():LiveData<List<Cart>>
 
 //    fun getCartItems(): Flow<List<Cart>>={
 //

@@ -12,32 +12,32 @@ import javax.inject.Qualifier
 import javax.inject.Singleton
 
 
-@Module
-@InstallIn(ApplicationScope::class)
+//@Module
+//@InstallIn(ApplicationScope::class)
 object RoomModule {
 
-    @Provides
-    @Singleton
-    fun provideDatabse(
-        app: Application,
-        callBack: CartDataBase.CallBack
-    ) = Room.databaseBuilder(app, CartDataBase::class.java, "cart_database")
-        .fallbackToDestructiveMigration()
-        .addCallback(callBack)
-        .build()
-
-
-    @Provides
-    fun provideCartDao(db: CartDataBase) = db.cartDao()
-
-    @ApplicationScope
-    @Provides
-    @Singleton
-    fun providesApplicaionScope() = CoroutineScope(SupervisorJob())
+//    @Provides
+//    @Singleton
+//    fun provideDatabse(
+//        app: Application,
+//        callBack: CartDataBase.CallBack
+//    ) = Room.databaseBuilder(app, CartDataBase::class.java, "cart_database")
+//        .fallbackToDestructiveMigration()
+//        .addCallback(callBack)
+//        .build()
+//
+//
+//    @Provides
+//    fun provideCartDao(db: CartDataBase) = db.cartDao()
+//
+//    @ApplicationScope
+//    @Provides
+//    @Singleton
+//    fun providesApplicaionScope() = CoroutineScope(SupervisorJob())
 
 
 }
 
-@Retention(AnnotationRetention.RUNTIME)
-@Qualifier
-annotation class ApplicationScope
+//@Retention(AnnotationRetention.RUNTIME)
+//@Qualifier
+//annotation class ApplicationScope

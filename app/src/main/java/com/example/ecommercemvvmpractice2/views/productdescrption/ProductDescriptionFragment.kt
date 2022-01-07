@@ -11,6 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.ecommercemvvmpractice2.R
 import com.example.ecommercemvvmpractice2.databinding.ProductDescrptionBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.DelicateCoroutinesApi
 
 
 @AndroidEntryPoint
@@ -33,6 +34,7 @@ class ProductDescriptionFragment : Fragment() {
         return (productDescrptionBinding.root)
     }
 
+    @DelicateCoroutinesApi
     fun setupViews() {
         productDescrptionBinding.imageUrl = productdescArgs.productImageDescrption
         productDescrptionBinding.productdescriptionName.text =
@@ -44,15 +46,20 @@ class ProductDescriptionFragment : Fragment() {
 
         productDescrptionBinding.addToCart.setOnClickListener {
 
-            productDescrptionViewModels.saveCartElement()
+            productDescrptionViewModels.saveCartElement(
+                productdescArgs.productTitleDescrption,
+                productdescArgs.productPriceCategory,
+                productdescArgs.productId,
+                0
+            )
 
         }
 
 
-        fun saveValueInCart(){
-            productDescrptionViewModels.productName
-
-        }
+//        fun saveValueInCart(){
+//            productDescrptionViewModels.productName
+//
+//        }
 
     }
 

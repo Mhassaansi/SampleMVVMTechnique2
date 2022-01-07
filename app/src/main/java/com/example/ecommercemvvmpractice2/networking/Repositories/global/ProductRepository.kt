@@ -1,5 +1,6 @@
-package com.example.ecommercemvvmpractice2.networking
+package com.example.ecommercemvvmpractice2.networking.Repositories.global
 
+import com.example.ecommercemvvmpractice2.networking.ApiService
 import javax.inject.Inject
 
 class ProductRepository @Inject constructor(private val apiService: ApiService){

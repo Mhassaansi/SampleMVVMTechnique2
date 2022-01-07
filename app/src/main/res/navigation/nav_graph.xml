@@ -55,6 +55,13 @@
         <argument
             android:name="product_price_Descrption"
             app:argType="string" />
+        <argument
+            android:name="product_price_Category"
+            app:argType="string" />
+        <argument
+            android:name="product_Id"
+            app:argType="int" />
+
 </fragment>
 
 </navigation>

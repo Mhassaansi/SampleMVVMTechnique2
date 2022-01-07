@@ -1,6 +1,8 @@
 package com.example.ecommercemvvmpractice2.data.room
 
+import android.content.Context
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.ecommercemvvmpractice2.di.ApplicationScope
@@ -16,15 +18,19 @@ abstract class CartDataBase : RoomDatabase() {
     abstract fun cartDao(): CartDao
 
 
-    class CallBack @Inject constructor(
-        private val database: Provider<CartDataBase>,
-        @ApplicationScope private val applicationScope: CoroutineScope
-    ) : RoomDatabase.Callback() {
-        override fun onCreate(db: SupportSQLiteDatabase) {
-            super.onCreate(db)
+    companion object {
+        @Volatile
+        private var instance: CartDataBase? = null
+        private val LOCK = Any()
 
-            val dao = database.get().cartDao()
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
+            instance ?: createDatabase(context).also {
+                instance = it
+            }
         }
+
+        private fun createDatabase(context: Context) =
+            Room.databaseBuilder(context.applicationContext, CartDataBase::class.java, "CartDatabase.db").build()
     }
 
 }

@@ -100,8 +100,8 @@ class ProductFragment : Fragment(), itemClickListener {
         val action = ProductFragmentDirections.actionProductFragmentToProductDescriptionFragment2(
             productList.get(pos).image.toString(), productList.get(pos).title.toString(),
             productList.get(pos).description.toString(), productList.get(pos).price.toString(),
-
-            )
+            productList.get(pos).category.toString(),productList.get(pos).id!!.toInt()
+        )
         findNavController().navigate(action)
 
     }
