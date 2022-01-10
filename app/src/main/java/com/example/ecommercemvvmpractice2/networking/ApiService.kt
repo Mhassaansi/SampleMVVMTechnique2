@@ -5,6 +5,7 @@ import com.example.ecommercemvvmpractice2.data.request.Auth
 import com.example.ecommercemvvmpractice2.data.response.LoginData
 import com.example.ecommercemvvmpractice2.data.response.ProductResponse
 import com.example.ecommercemvvmpractice2.utilities.constants.ApisEndpoints
+import om.example.ecommercemvvmpractice2.data.AddUsers
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -25,6 +26,9 @@ interface ApiService {
 
     @POST(ApisEndpoints.addNewProduct)
     suspend fun addTocart(@Body productBody:AddToCart):AddToCart
+
+    @POST(ApisEndpoints.addUsers)
+    suspend fun addUsers(@Body usersBody:AddUsers):AddUsers
 
 
 
